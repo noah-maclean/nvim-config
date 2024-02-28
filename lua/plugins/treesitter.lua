@@ -1,19 +1,15 @@
 -- treesitter for highlighting and indenting
 return {
-    "nvim-treesitter/nvim-treesitter", 
+    "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     -- configure treesitter
     config = function()
-        local config = require("nvim-treesitter.configs")
-        config.setup({
-        -- ensure that these languages are installed
-        ensure_install = {"lua", "javascript", "html", "css", "python"},
-        highlight = { enable = true },
-        indent = { enable = true } 
+        local configs = require("nvim-treesitter.configs")
+        configs.setup({
+            -- ensure that these languages are installed
+            ensure_installed = { "lua", "javascript", "c", "markdown", "python", "html", "css" },
+            highlight = { enable = true },
+            indent = { enable = true },
         })
-    end
+    end,
 }
-
-
-
-

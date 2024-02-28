@@ -7,4 +7,9 @@ vim.cmd("set shiftwidth=4")
 -- set leader to be space
 vim.g.mapleader = " "
 
+-- set numbers on the side and make them relative
+vim.opt.nu = true
+vim.opt.rnu = true
 
+-- enable scrolloff (keeps the bottom/top of file x number of lines away from cursor)
+vim.opt.scrolloff = 12

@@ -11,6 +11,5 @@ return {
         -- set keymaps for neo-tree
         -- Ctrl + n reveals file tree on the left
         vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
-    end
+    end,
 }
-

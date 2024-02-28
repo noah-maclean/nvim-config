@@ -1,5 +1,6 @@
 -- adds the plugin manager lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -12,7 +13,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 local opts = {}
 
 -- vim options are return by the lua/vim-options.lua file
@@ -20,10 +20,3 @@ require("vim-options")
 
 -- plugins are returned by the lua/plugins/ directory
 require("lazy").setup("plugins")
-
-
-
-
-
-
-
