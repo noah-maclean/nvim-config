@@ -2,6 +2,7 @@ return {
     {
         -- mason package manager for LSP servers
         "williamboman/mason.nvim",
+        lazy = false,
         config = function()
             require("mason").setup()
         end,
@@ -9,26 +10,37 @@ return {
     {
         -- allows mason to talk to lspconfig
         "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup({
-                -- ensures that the LSPs in the table below are installed in the config
-                -- lua_ls: lua, tsserver: javascript, pyright: python, html: html, cssls: css
-                ensure_installed = { "lua_ls", "tsserver", "pyright", "html", "cssls" },
-            })
-        end,
+        lazy = false,
+        opts = {
+            auto_install = true,
+        }
     },
     {
         -- configures the LSPs (duh)
         "neovim/nvim-lspconfig",
+        lazy = false,
         config = function()
+            -- allows completions to be used with the lsp data
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
             local lspconfig = require("lspconfig")
 
             -- run the setup function for any LSPs that are installed/required
-            lspconfig.lua_ls.setup({})
-            lspconfig.tsserver.setup({})
-            lspconfig.pyright.setup({})
-            lspconfig.html.setup({})
-            lspconfig.cssls.setup({})
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities
+            })
+            lspconfig.tsserver.setup({
+                capabilities = capabilities
+            })
+            lspconfig.pyright.setup({
+                capabilities = capabilities
+            })
+            lspconfig.html.setup({
+                capabilities = capabilities
+            })
+            lspconfig.cssls.setup({
+                capabilities = capabilities
+            })
 
             -- keymaps for information from LSPs
             -- K gives information about the text under the cursor

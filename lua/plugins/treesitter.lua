@@ -6,8 +6,8 @@ return {
     config = function()
         local configs = require("nvim-treesitter.configs")
         configs.setup({
-            -- ensure that these languages are installed
-            ensure_installed = { "lua", "javascript", "c", "markdown", "python", "html", "css" },
+            -- automatically installs a language when a parser is not present
+            auto_install = true,
             highlight = { enable = true },
             indent = { enable = true },
         })
